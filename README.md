@@ -8,13 +8,15 @@ O projeto visa a construção uma API para os seguintes requisitos:
 * Realizar um fluxo de fechamento de pedido; 
 * Tela de perfil de usuário com envio de foto tanto pela câmera quanto pela galeria.
 
-Este projeto visa cronstruir com as seguintes tools: Backend
 
-* Java com Spring Boot;
-* Banco de dados MySQL;
-* JPA com Hibernate para mapeamento objeto-relacional;
-* Envio de email com SMTP da Google;
-* Armazenamento de imagens com storage S3 da Amazon;
-* Autenticação e autorização com tokens JWT;
-* Implantação na nuvem usando a plataforma Heroku;
-* Validação de dados, tratamento de exceções, uso adequado do protocolo HTTP no padrão REST, segurança, CORS.
+Este projeto visa cronstruir com as seguintes tools: Frontend
+
+* utilizando Ionic;
+* Arquitetura MVC do Angular;
+* Componentes visuais do Ionic, Angular reactive forms, navegação, interceptors, local storage;
+* Tratamento de erros;
+* Acesso à câmera e galeria, paginação com infinite scroll, loading e refresher;
+* Todo processo de build para Android;
+* Publicação do app na Play Store.
+*
+Versão: Ionic 3 e Angular 5
