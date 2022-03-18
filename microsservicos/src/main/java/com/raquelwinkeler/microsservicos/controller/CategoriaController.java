@@ -12,18 +12,18 @@ import com.raquelwinkeler.microsservicos.domain.Categoria;
 @RestController
 @RequestMapping(value="/categorias")
 public class CategoriaController {
-	
-	@GetMapping
-	public List<Categoria> listar() {
-		
-		Categoria cat1 = new Categoria(1, "informática");
-		Categoria cat2 = new Categoria(2, "escritório");
-		
-		List<Categoria> listCategorias = new ArrayList<Categoria>();
-		listCategorias.add(cat1);
-		listCategorias.add(cat2);
-		
-		return listCategorias;
-	}
+
+    @GetMapping
+    public List<Categoria> listar() {
+
+        Categoria cat1 = new Categoria(1, "informática");
+        Categoria cat2 = new Categoria(2, "escritório");
+
+        List<Categoria> listCategorias = new ArrayList<Categoria>();
+        listCategorias.add(cat1);
+        listCategorias.add(cat2);
+
+        return listCategorias;
+    }
 
 }
