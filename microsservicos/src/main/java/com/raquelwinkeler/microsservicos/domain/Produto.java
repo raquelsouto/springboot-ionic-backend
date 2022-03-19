@@ -1,5 +1,6 @@
 package com.raquelwinkeler.microsservicos.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class Produto implements Serializable {
     private String nome;
     private double preco;
 
+    @JsonBackReference
     @ManyToMany
     @JoinTable(name = "produto_categoria",
             joinColumns = @JoinColumn(name="produto_id"),
