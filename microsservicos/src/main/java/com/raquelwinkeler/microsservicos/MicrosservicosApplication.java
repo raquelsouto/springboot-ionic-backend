@@ -1,13 +1,8 @@
 package com.raquelwinkeler.microsservicos;
 
-import com.raquelwinkeler.microsservicos.domain.Categoria;
-import com.raquelwinkeler.microsservicos.domain.Cidade;
-import com.raquelwinkeler.microsservicos.domain.Estado;
-import com.raquelwinkeler.microsservicos.domain.Produto;
-import com.raquelwinkeler.microsservicos.repositories.CategoriaRepository;
-import com.raquelwinkeler.microsservicos.repositories.CidadeRepository;
-import com.raquelwinkeler.microsservicos.repositories.EstadoRepository;
-import com.raquelwinkeler.microsservicos.repositories.ProdutoRepository;
+import com.raquelwinkeler.microsservicos.domain.*;
+import com.raquelwinkeler.microsservicos.domain.enums.TipoCliente;
+import com.raquelwinkeler.microsservicos.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,16 +15,22 @@ import java.util.Arrays;
 public class MicrosservicosApplication implements CommandLineRunner {
 
     @Autowired
-    CategoriaRepository categoriaRepository;
+    private CategoriaRepository categoriaRepository;
 
     @Autowired
-    ProdutoRepository produtoRepository;
+    private ProdutoRepository produtoRepository;
 
     @Autowired
-    CidadeRepository cidadeRepository;
+    private CidadeRepository cidadeRepository;
 
     @Autowired
-    EstadoRepository estadoRepository;
+    private EstadoRepository estadoRepository;
+
+    @Autowired
+    private EnderecoRepository enderecoRepository;
+
+    @Autowired
+    private ClienteRepository clienteRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(MicrosservicosApplication.class, args);
@@ -66,6 +67,17 @@ public class MicrosservicosApplication implements CommandLineRunner {
 
         estadoRepository.saveAll(Arrays.asList(est1, est2));
         cidadeRepository.saveAll(Arrays.asList(cid1, cid2, cid3));
-        
+
+        Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "12345678901", TipoCliente.PESSOA_FISICA);
+        cli1.getTelefones().addAll(Arrays.asList("321456987", "9874521297"));
+
+        Endereco e1 = new Endereco(null, "Rua Flores", 300, "Apto 203", "Jardim", "123654789", cli1, cid1);
+        Endereco e2 = new Endereco(null, "Av. Matos", 105, "Sala 800", "Centro", "5874123698", cli1, cid2);
+
+        cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+
+        clienteRepository.save(cli1);
+        enderecoRepository.saveAll(Arrays.asList(e1, e2));
+
     }
 }
