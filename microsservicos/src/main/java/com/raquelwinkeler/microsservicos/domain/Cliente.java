@@ -1,5 +1,6 @@
 package com.raquelwinkeler.microsservicos.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.raquelwinkeler.microsservicos.domain.enums.TipoCliente;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,6 +29,7 @@ public class Cliente implements Serializable {
     private String cpfOuCnpj;
     private Integer tipoCliente;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
