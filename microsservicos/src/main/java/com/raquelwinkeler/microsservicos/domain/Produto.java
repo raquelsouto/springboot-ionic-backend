@@ -6,7 +6,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -27,10 +29,21 @@ public class Produto implements Serializable {
             inverseJoinColumns = @JoinColumn(name ="categoria_id"))
     private List<Categoria> categorias = new ArrayList<>();
 
+    private Set<ItemPedido> itens = new HashSet<>();
+
     public Produto(Integer id, String nome, double preco) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
+    }
+
+    public List<Pedido> getPedidos() {
+        List<Pedido> pedidosList = new ArrayList<>();
+
+        for (ItemPedido x : itens) {
+            pedidosList.add(x.getPedido());
+        }
+        return pedidosList;
     }
 
 }
