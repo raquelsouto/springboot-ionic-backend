@@ -8,18 +8,25 @@ import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class Pagamento implements Serializable {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Pagamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     private Integer id;
-    private EstadoPagamento estado;
+    private Integer estado;
 
     @OneToOne
     @JoinColumn(name="pedido_id")
     @MapsId
     private Pedido pedido;
+
+    public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
+        this.id = id;
+        this.estado = estado.getCodigo();
+        this.pedido = pedido;
+
+    }
 
 }

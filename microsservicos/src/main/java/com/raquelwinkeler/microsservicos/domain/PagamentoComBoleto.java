@@ -3,11 +3,13 @@ package com.raquelwinkeler.microsservicos.domain;
 import com.raquelwinkeler.microsservicos.domain.enums.EstadoPagamento;
 import lombok.*;
 
+import javax.persistence.Entity;
 import java.util.Date;
 
 @EqualsAndHashCode
 @Data
 @NoArgsConstructor
+@Entity
 public class PagamentoComBoleto extends Pagamento {
 
     private static final long serialVersionUID = 1L;
