@@ -1,18 +1,20 @@
 package com.raquelwinkeler.microsservicos.domain;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import java.io.Serializable;
 
 @Data
-@Embeddable
+@Entity
+@NoArgsConstructor
 public class ItemPedido implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @EqualsAndHashCode.Include
+    @EmbeddedId
     private ItemPedidoPK id = new ItemPedidoPK();
     private Double desconto;
     private Integer quantidade;

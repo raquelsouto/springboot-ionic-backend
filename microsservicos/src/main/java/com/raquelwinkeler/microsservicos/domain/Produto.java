@@ -11,11 +11,12 @@ import java.util.List;
 import java.util.Set;
 
 @Data
-@NoArgsConstructor
 @Entity
 public class Produto implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -29,6 +30,7 @@ public class Produto implements Serializable {
             inverseJoinColumns = @JoinColumn(name ="categoria_id"))
     private List<Categoria> categorias = new ArrayList<>();
 
+    @OneToMany(mappedBy = "id.produto")
     private Set<ItemPedido> itens = new HashSet<>();
 
     public Produto(Integer id, String nome, double preco) {
